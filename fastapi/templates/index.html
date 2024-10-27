@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장소 혼잡도 확인</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input[type="text"], input[type="file"] { padding: 10px; width: 200px; }
+        button { padding: 10px; }
+        #result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>장소 혼잡도 확인</h1>
+
+    <h2>이미지 파일 업로드:</h2>
+    <input type="file" id="fileInput" />
+    <button onclick="uploadFile()">업로드</button>
+
+    <div id="result"></div>
+
+    <script>
+        
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert("파일을 선택해 주세요.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const response = await fetch("/upload/", {
+                method: "POST",
+                body: formData
+            });
+            const resultDiv = document.getElementById('result');
+
+            if (response.ok) {
+                const data = await response.json();
+                resultDiv.innerHTML = `
+                    <h2>결과</h2>
+                    <p>인식한 사람의 수: ${data["현재 사람의 수"]}</p>
+                    <p>혼잡도: ${data["혼잡도"]}</p>
+                    <img id="resultImage" src="${data["분석한 결과 이미지"]}?t=${new Date().getTime()}" alt="결과 이미지" style="max-width: 100%; height: auto;">
+                `;
+            } else {
+                const error = await response.json();
+                resultDiv.innerHTML = `<p style="color: red;">${error.detail}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
