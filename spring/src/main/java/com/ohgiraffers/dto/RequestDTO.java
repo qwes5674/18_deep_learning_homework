@@ -1,4 +1,4 @@
-package com.ohgiraffers.homework_back.dto;
+package com.ohgiraffers.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

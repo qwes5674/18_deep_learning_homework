@@ -35,7 +35,7 @@ def detect_people(img_path: str):
     cv2.imwrite(output_path, img_with_detections)
 
     return {
-        "현재 사람의 수": person_count,
-        "혼잡도": congestion,
-        "분석한 결과 이미지": f"/images/output_image_{timestamp}.png"
+        "person_count": person_count,
+        "congestion": congestion,
+        "image": f"/images/output_image_{timestamp}.png"
     }

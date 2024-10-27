@@ -1,13 +1,13 @@
-package com.ohgiraffers.homework_back;
+package com.ohgiraffers;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HomeworkBackApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(HomeworkBackApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.ohgiraffers.homework_back.dto;
+package com.ohgiraffers.dto;
 
 import lombok.*;
 
@@ -11,6 +11,6 @@ public class ResponseDTO {
 
     private int person_count;
     private String congestion;
-    private String img;
+    private String image;
 
 }

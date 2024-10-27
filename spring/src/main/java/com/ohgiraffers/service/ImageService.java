@@ -1,7 +1,7 @@
-package com.ohgiraffers.homework_back.service;
+package com.ohgiraffers.service;
 
-import com.ohgiraffers.homework_back.dto.RequestDTO;
-import com.ohgiraffers.homework_back.dto.ResponseDTO;
+import com.ohgiraffers.dto.RequestDTO;
+import com.ohgiraffers.dto.ResponseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.*;
@@ -23,7 +23,7 @@ public class ImageService {
     private final RestTemplate restTemplate;
 
     // 요청 보낼 url
-    private final String FAST_API_SERVER_URL = "http://localhost:8000/analyze";
+    private final String FAST_API_SERVER_URL = "http://localhost:8000/analyze/upload/";
 
     public ImageService(RestTemplate restTemplate){
         this.restTemplate = restTemplate;

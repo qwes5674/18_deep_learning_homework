@@ -19,7 +19,7 @@ router.mount("/images", StaticFiles(directory="images"), name="images")
 def read_index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-@router.post("/upload/")
+@router.post("/analyze/upload/")
 async def upload_file(file: UploadFile = File(...)):
     
     # 파일 저장 경로

@@ -1,8 +1,9 @@
-package com.ohgiraffers.homework_back.config;
+package com.ohgiraffers.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -24,5 +25,13 @@ public class SwaggerConfig {
                 .title("analyze AI")
                 .description("yolo v5를 사용한 이미지 분석")
                 .version("1.0.0");
+    }
+
+    @Bean
+    public GroupedOpenApi analyzeApi() {
+        return GroupedOpenApi.builder()
+                .group("analyze")
+                .pathsToMatch("/analyze/**") // 분석 관련 API 경로 설정
+                .build();
     }
 }
